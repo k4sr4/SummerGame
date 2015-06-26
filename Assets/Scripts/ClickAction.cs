@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ClickAction : MonoBehaviour {
@@ -6,22 +6,24 @@ public class ClickAction : MonoBehaviour {
 	GameObject selected;
 
 	void Update () {
+		//Gets where the mouse is clicking by ray casting
 		if (Input.GetMouseButtonDown(0)){
 			Ray toMouse = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit rhInfo;
 			bool didHit = Physics.Raycast (toMouse, out rhInfo);
 			if (StartScript.start){
 				if (didHit){
-					if (!isSelected() && rhInfo.collider.tag == "Unit"){
+					if (!isSelected() && rhInfo.collider.tag == "Unit"){ //if a unit was not selected before, select this unit to move on the next click
 						selected = rhInfo.collider.gameObject;
 					}
-					else if (isSelected() && selected.tag == "Unit"){
+					else if (isSelected() && rhInfo.collider.tag == "Unit"){ //if a unit was selected before, swap two positions
 						Swap (selected, rhInfo.collider.gameObject);
 						selected = null;
 					}
-					else if (rhInfo.collider.tag == "Grid"){
+					else if (rhInfo.collider.tag == "Grid"){ ////if a unit was selected before, move it to this grid
 						if (isSelected()){
 							changePosition (rhInfo.collider.gameObject.transform.position);
+							selected = null;
 						}
 					}
 					Debug.Log("Hitted " + rhInfo.collider.name);
@@ -48,7 +50,7 @@ public class ClickAction : MonoBehaviour {
 		first.transform.position = second.transform.position;
 		second.transform.position = temp;
 	}
-
+	
 	bool isSelected(){
 		if (selected == null)
 			return false;
