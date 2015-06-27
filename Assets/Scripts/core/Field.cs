@@ -67,6 +67,15 @@ public class Field : MonoBehaviour {
 		}
 	}
 
+/**
+ *  @DEBUG
+ */
+	public UnitToken SetUnit(UnitToken original, int r, int c) {
+		UnitToken instantiated = Instantiate(original, new Vector3(r, c, 0), Quaternion.identity) as UnitToken;
+		instantiated.transform.SetParent(unitLayer.transform);
+		return instantiated;
+	}
+
 /*  Private Members
  *  =========================================================================*/
 	private Tile[,] grid;

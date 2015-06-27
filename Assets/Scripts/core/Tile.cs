@@ -17,6 +17,12 @@ public class Tile : MonoBehaviour {
 		}
 	}
 
+	public Unit Unit {
+		get {
+			return unit;
+		}
+	}
+
 /*  Unity API
  *  =========================================================================*/
 	// Use this for initialization
@@ -55,4 +61,6 @@ public class Tile : MonoBehaviour {
 	private bool initialized = false;
 	private int row;  // @TODO make short?
 	private int col;
+
+	private Unit unit;
 }
