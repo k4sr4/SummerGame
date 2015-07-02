@@ -1,10 +1,15 @@
 ﻿/**
- *  Factions are used to determine unit type.  Intended usage:
+ *  This is data representing factions in the game.  The actual faction names
+ *  are located in the Faction enum at the bottom.  A C# extension is used to
+ *  add functionality to the enum.
+ *  
+ *  @usage
  *  Faction f1 = Faction.White;
  *  Faction f2 = Faction.Black;
  *  bool b = f1.Is(f2);  // false
- */
-
+ * 
+ *  @version B.00.1507
+ *  **************************************************************************/
 public static class FactionExtension {
 /**
  *  Determines whether two factions are the same.

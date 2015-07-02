@@ -201,8 +201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66315768ce1427340b32391095138973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitTokenToInstantiate: {fileID: 11447326, guid: a808dca255240ff40817ea3405bbb32a,
-    type: 2}
   field: {fileID: 1049324816}
 --- !u!1 &1049324815
 GameObject:
@@ -232,6 +230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileToInstantiate: {fileID: 11455924, guid: a1b97bb0fe1c76c4781729cdd76e1551, type: 2}
+  unitTokenToInstantiate: {fileID: 11447326, guid: a808dca255240ff40817ea3405bbb32a,
+    type: 2}
 --- !u!4 &1049324817
 Transform:
   m_ObjectHideFlags: 0

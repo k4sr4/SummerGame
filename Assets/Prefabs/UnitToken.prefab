@@ -265,8 +265,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb9bdc1c61d286d459a5ea535f6bbef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frame: {fileID: 154538}
   powerTextObj: {fileID: 173054}
   defenseTextObj: {fileID: 111776}
+  avatar: {fileID: 142064}
 --- !u!212 &21204162
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -334,6 +336,18 @@ Prefab:
       propertyPath: defenseTextObj
       value: 
       objectReference: {fileID: 111776}
+    - target: {fileID: 0}
+      propertyPath: frame
+      value: 
+      objectReference: {fileID: 154538}
+    - target: {fileID: 0}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 142064}
+    - target: {fileID: 0}
+      propertyPath: avatar
+      value: 
+      objectReference: {fileID: 142064}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 103390}

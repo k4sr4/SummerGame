@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
+/**
+ *  This class represents the field of play.  It lays out the Tiles and
+ *  directs the traffic of UnitTokens.
+ * 
+ *  @version B.00.1507
+ *  **************************************************************************/
 public class Field : MonoBehaviour {
 
 /*  Public Members
@@ -9,6 +16,11 @@ public class Field : MonoBehaviour {
  *  This tile is used to instantiate other tiles.  Never display this tile in particular.
  */
 	public Tile tileToInstantiate;
+
+/**
+ *  This UnitToken is used to instantiate other tokens.
+ */
+	public UnitToken unitTokenToInstantiate;
 
 /**
  *  Number of rows in the grid currently.
@@ -68,12 +80,28 @@ public class Field : MonoBehaviour {
 	}
 
 /**
- *  @DEBUG
- */
+ *  @deprecated
+ *
 	public UnitToken SetUnit(UnitToken original, int r, int c) {
 		UnitToken instantiated = Instantiate(original, new Vector3(r, c, 0), Quaternion.identity) as UnitToken;
 		instantiated.transform.SetParent(unitLayer.transform);
 		return instantiated;
+	}
+  */
+
+/**
+ *  Places units onto the field given their data and coordinates
+ *  @param units Map of unit data to their coordinates.  This should be generated from outside the class.
+ */
+	public void fieldUnits(Dictionary<Unit, Vector2> units) {
+		foreach(Unit u in units.Keys) {
+			Vector2 location = units[u];
+			UnitToken instantiated = Instantiate(unitTokenToInstantiate, new Vector3(location.x, location.y, 0), Quaternion.identity) as UnitToken;
+			instantiated.Unit = u;
+			instantiated.transform.SetParent(unitLayer.transform);
+			instantiated.UpdateVisual();
+			grid[(int)location.x, (int)location.y].DeployUnit(instantiated);
+		}
 	}
 
 /*  Private Members
